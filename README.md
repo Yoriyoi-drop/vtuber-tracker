@@ -369,25 +369,56 @@ pip install -e .
 
 ### 3. Menjalankan Aplikasi
 ```bash
-# Method 1: Menggunakan main.py (direkomendasikan)
-python main.py                    # GUI mode dengan kamera default
-python main.py --mode cli         # CLI mode
-python main.py --mode gui         # GUI mode
-python main.py --camera 1         # Gunakan kamera dengan indeks 1
-python main.py --stream-url http://[ANDROID_IP]:8080/video  # Gunakan kamera Android
-python main.py --help             # Tampilkan bantuan
+# Method 1: Menggunakan launcher utama (sangat direkomendasikan)
+python run_vtuber_tracker.py            # GUI mode (default, otomatis deteksi venv)
+python run_vtuber_tracker.py --mode cli # CLI mode
+python run_vtuber_tracker.py --help     # Tampilkan semua opsi
 
-# Method 2: Menggunakan run_app.py (lama)
-python run_app.py                 # GUI mode dengan kamera default
-python run_app.py --mode cli      # CLI mode
+# Method 2: Menggunakan main.py (tetap didukung)
+python main.py                          # GUI mode dengan kamera default
+python main.py --mode cli               # CLI mode
+python main.py --camera 1               # Gunakan kamera dengan indeks 1
+python main.py --stream-url http://[ANDROID_IP]:8080/video  # Gunakan kamera Android
+
+# Method 3: Menggunakan run_app.py (lama)
+python run_app.py                       # GUI mode dengan kamera default
+python run_app.py --mode cli            # CLI mode
 python run_app.py --stream-url http://[ANDROID_IP]:8080/video
 ```
 
-`main.py` adalah file utama yang direkomendasikan untuk menjalankan aplikasi, karena:
-- Menyediakan interface yang lebih user-friendly
-- Melakukan pengecekan dependencies otomatis
-- Memberikan informasi sistem dan instruksi yang jelas
-- Menggabungkan semua fungsi dalam satu file mudah akses
+`run_vtuber_tracker.py` adalah launcher utama yang **paling disarankan** karena:
+- **Otomatis mendeteksi dan menggunakan virtual environment** jika ada
+- **Mengelola dependencies** tanpa harus aktifkan venv secara manual
+- **Mudah diingat** - hanya satu perintah untuk semua
+- **Ramah pemula** - memberikan informasi sistem dan instruksi jelas
+- **Siap produksi** - bisa digunakan profesional langsung
+
+### 4. Instalasi dan Penggunaan untuk Pemula
+Untuk penggunaan cepat dan mudah:
+
+1. **Unduh proyek:**
+   ```bash
+   git clone https://github.com/Yoriyoi-drop/vtuber-tracker.git
+   cd vtuber-tracker
+   ```
+
+2. **Buat virtual environment dan install dependencies:**
+   ```bash
+   python -m venv vtuber_env
+   source vtuber_env/bin/activate  # Linux/Mac
+   # atau
+   vtuber_env\Scripts\activate     # Windows
+
+   pip install -r requirements.txt
+   pip install -e .
+   ```
+
+3. **Jalankan aplikasi hanya dengan satu perintah:**
+   ```bash
+   python run_vtuber_tracker.py
+   ```
+
+Aplikasi siap digunakan tanpa harus ingat perintah kompleks!
 
 ## 🚀 Cara SUPER MUDAH - Hanya 1 Perintah:
 ```bash
@@ -395,6 +426,28 @@ python main.py    # Cukup ini saja untuk menjalankan aplikasi!
 ```
 
 Proyek ini sekarang **100% siap pakai** hanya dengan satu perintah! 🎉
+
+## 📦 Instalasi Otomatis (Opsional tapi direkomendasikan untuk penggunaan permanen):
+
+Jika ingin menginstal aplikasi secara permanen ke sistem (tidak perlu aktifkan virtual environment):
+
+**Linux/macOS:**
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+**Windows:**
+```cmd
+install.bat
+```
+
+Setelah instalasi, aplikasi bisa dijalankan dari mana saja:
+```bash
+python main.py              # Dari direktori proyek
+vtuber-tracker              # Dari mana saja (jika diinstal)
+```
+
 Lihat [ONE_COMMAND_RUN.md](ONE_COMMAND_RUN.md) untuk panduan lengkap.
 
 ### 4. Kompatibilitas Platform
