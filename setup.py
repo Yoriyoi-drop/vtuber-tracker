@@ -33,7 +33,8 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "vtuber-tracker=run_app:main",
+            "vtuber-tracker=main:main",
+            "vtuber-tracker-cli=main:main",
         ],
     },
     include_package_data=True,

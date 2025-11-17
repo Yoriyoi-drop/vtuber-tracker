@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VTuber Tracker
+Comment=All-in-One VTuber Tracking Application
+Exec=python3 /opt/vtuber-tracker/main.py
+Icon=/opt/vtuber-tracker/icon.png
+Terminal=true
+Categories=AudioVideo;Video;Graphics;
