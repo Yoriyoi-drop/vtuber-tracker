@@ -184,5 +184,14 @@ Library juga mendukung penggunaan OBS Virtual Camera sebagai sumber input. Ini m
 ## Kontribusi
 Proyek ini terbuka untuk kontribusi. Silakan lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan berkontribusi.
 
+## Contoh Penggunaan
+Lihat folder [examples/](examples/) untuk contoh-contoh penggunaan yang dapat membantu Anda memulai:
+
+- [simple_example.py](examples/simple_example.py) - Contoh dasar penggunaan library
+- [calibration_example.py](examples/calibration_example.py) - Demonstrasi proses kalibrasi dan penyesuaian sensitivitas
+
+## Arsitektur
+Untuk dokumentasi arsitektur dan bagaimana sistem bekerja secara internal, lihat [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Lisensi
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
