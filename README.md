@@ -40,6 +40,39 @@ cd vtuber-tracker
 pip install -e .
 ```
 
+## Menggunakan Kamera Android
+
+VTuber Tracker mendukung penggunaan kamera dari ponsel Android melalui IP Webcam:
+
+### 1. Pengaturan Kamera Android
+1. Install aplikasi IP Webcam di ponsel Android (misalnya "IP Webcam" dari Pavel Khlebovich)
+2. Pastikan ponsel dan komputer terhubung ke jaringan Wi-Fi yang sama
+3. Buka aplikasi IP Webcam dan tekan "Start Server"
+4. Catat alamat IP dan port yang ditampilkan (misalnya `192.168.1.100:8080`)
+
+### 2. Menggunakan dengan Aplikasi
+```bash
+# Jalankan dengan URL stream kamera Android
+python run_app.py --stream-url http://192.168.1.100:8080/video
+```
+
+### 3. Menggunakan dengan Library
+```python
+from vtuber_tracker_lib import VTuberTracker, VTuberConfig
+
+config = VTuberConfig(
+    stream_url="http://192.168.1.100:8080/video",  # URL dari IP Webcam
+    frame_width=640,
+    frame_height=480,
+    enable_vmc_output=True
+)
+
+tracker = VTuberTracker(config)
+tracker.start()
+```
+
+Lihat [examples/android_camera_integration.py](examples/android_camera_integration.py) untuk contoh implementasi lengkap.
+
 ## Cara Penggunaan Dasar
 
 ### 1. Penggunaan Sederhana
@@ -189,6 +222,8 @@ Lihat folder [examples/](examples/) untuk contoh-contoh penggunaan yang dapat me
 
 - [simple_example.py](examples/simple_example.py) - Contoh dasar penggunaan library
 - [calibration_example.py](examples/calibration_example.py) - Demonstrasi proses kalibrasi dan penyesuaian sensitivitas
+- [android_camera_example.py](examples/android_camera_example.py) - Panduan penggunaan kamera Android
+- [android_camera_integration.py](examples/android_camera_integration.py) - Contoh integrasi kamera Android
 
 ## Arsitektur
 Untuk dokumentasi arsitektur dan bagaimana sistem bekerja secara internal, lihat [ARCHITECTURE.md](ARCHITECTURE.md).

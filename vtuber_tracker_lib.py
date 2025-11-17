@@ -51,6 +51,7 @@ class VTuberConfig:
     vmc_host: str = "127.0.0.1"
     vmc_port: int = 39539
     enable_vmc_output: bool = True
+    stream_url: Optional[str] = None  # URL untuk stream kamera IP/Android
 
 
 class VTuberTracker:
@@ -107,26 +108,36 @@ class VTuberTracker:
             # Initialize camera with detection and fallback
             from tracker.camera import CameraCapture
 
-            # First, try to detect available cameras
-            available_cameras = self._get_available_cameras()
-            if not available_cameras:
-                raise RuntimeError("Tidak ada kamera yang terdeteksi. Pastikan kamera terhubung dan tidak digunakan aplikasi lain.")
-
-            # Check if the configured camera index is available
-            if self.config.camera_index not in available_cameras:
-                print(f"Kamera indeks {self.config.camera_index} tidak tersedia.")
-                print(f"Kamera yang tersedia: {available_cameras}")
-                print(f"Menggunakan kamera pertama: {available_cameras[0]}")
-                actual_camera_index = available_cameras[0]
+            # Check if using IP stream
+            if self.config.stream_url:
+                # Use IP stream instead of local camera
+                self.camera = CameraCapture(
+                    camera_index=self.config.camera_index,
+                    frame_width=self.config.frame_width,
+                    frame_height=self.config.frame_height,
+                    stream_url=self.config.stream_url
+                )
             else:
-                actual_camera_index = self.config.camera_index
+                # First, try to detect available cameras
+                available_cameras = self._get_available_cameras()
+                if not available_cameras:
+                    raise RuntimeError("Tidak ada kamera yang terdeteksi. Pastikan kamera terhubung dan tidak digunakan aplikasi lain.")
 
-            # Initialize with actual available camera
-            self.camera = CameraCapture(
-                camera_index=actual_camera_index,
-                frame_width=self.config.frame_width,
-                frame_height=self.config.frame_height
-            )
+                # Check if the configured camera index is available
+                if self.config.camera_index not in available_cameras:
+                    print(f"Kamera indeks {self.config.camera_index} tidak tersedia.")
+                    print(f"Kamera yang tersedia: {available_cameras}")
+                    print(f"Menggunakan kamera pertama: {available_cameras[0]}")
+                    actual_camera_index = available_cameras[0]
+                else:
+                    actual_camera_index = self.config.camera_index
+
+                # Initialize with actual available camera
+                self.camera = CameraCapture(
+                    camera_index=actual_camera_index,
+                    frame_width=self.config.frame_width,
+                    frame_height=self.config.frame_height
+                )
             
             # Initialize face tracker
             self.face_tracker = FaceTracker()

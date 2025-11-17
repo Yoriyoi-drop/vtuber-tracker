@@ -25,7 +25,7 @@ from sender.vts_sender import VTSSender
 
 
 class VTuberTrackerApp:
-    def __init__(self):
+    def __init__(self, stream_url=None):
         self.camera = None
         self.face_tracker = None
         self.smoother = None
@@ -35,6 +35,7 @@ class VTuberTrackerApp:
         self.vmc_sender = None
         self.vts_sender = None
         self.is_running = False
+        self.stream_url = stream_url  # URL untuk kamera Android/IP
 
         # Load configuration
         self.load_config()
@@ -124,12 +125,22 @@ class VTuberTrackerApp:
     def initialize_components(self):
         """Initialize all tracking components."""
         try:
-            # Initialize camera
-            self.camera = CameraCapture(
-                camera_index=self.config['camera']['default_camera_index'],
-                frame_width=self.config['camera']['frame_width'],
-                frame_height=self.config['camera']['frame_height']
-            )
+            # Initialize camera - support both local and IP stream
+            if self.stream_url:
+                # Use IP stream (Android camera)
+                self.camera = CameraCapture(
+                    camera_index=self.config['camera']['default_camera_index'],
+                    frame_width=self.config['camera']['frame_width'],
+                    frame_height=self.config['camera']['frame_height'],
+                    stream_url=self.stream_url
+                )
+            else:
+                # Use local camera
+                self.camera = CameraCapture(
+                    camera_index=self.config['camera']['default_camera_index'],
+                    frame_width=self.config['camera']['frame_width'],
+                    frame_height=self.config['camera']['frame_height']
+                )
 
             # Initialize face tracker
             self.face_tracker = FaceTracker(
@@ -319,12 +330,15 @@ def main():
                         help='Run mode: gui (default) or cli (command-line)')
     parser.add_argument('--camera', type=int, default=None,
                         help='Camera index to use')
+    parser.add_argument('--stream-url', type=str, default=None,
+                        help='IP stream URL for Android/iPhone camera (e.g., http://192.168.1.100:8080/video)')
     parser.add_argument('--verbose', action='store_true',
                         help='Enable verbose output in CLI mode')
 
     args = parser.parse_args()
 
-    app = VTuberTrackerApp()
+    # Initialize app with stream URL if provided
+    app = VTuberTrackerApp(stream_url=args.stream_url)
 
     # Override config with command line args if provided
     if args.camera is not None:
