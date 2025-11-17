@@ -389,6 +389,14 @@ python run_app.py --stream-url http://[ANDROID_IP]:8080/video
 - Memberikan informasi sistem dan instruksi yang jelas
 - Menggabungkan semua fungsi dalam satu file mudah akses
 
+## 🚀 Cara SUPER MUDAH - Hanya 1 Perintah:
+```bash
+python main.py    # Cukup ini saja untuk menjalankan aplikasi!
+```
+
+Proyek ini sekarang **100% siap pakai** hanya dengan satu perintah! 🎉
+Lihat [ONE_COMMAND_RUN.md](ONE_COMMAND_RUN.md) untuk panduan lengkap.
+
 ### 4. Kompatibilitas Platform
 - **Windows 10/11**: Dukungan penuh
 - **macOS**: Dukungan penuh (Intel & Apple Silicon)
