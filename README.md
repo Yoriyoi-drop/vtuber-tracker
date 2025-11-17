@@ -341,6 +341,52 @@ Library juga mendukung penggunaan OBS Virtual Camera sebagai sumber input. Ini m
 - **Status**: Stabil dan siap produksi
 - Lihat [VERSION_INFO.md](VERSION_INFO.md) untuk detail evaluasi.
 
+## Cara Penggunaan Cepat
+
+### 1. Instalasi Cepat (Unix/Linux/macOS)
+```bash
+# Clone repository
+git clone https://github.com/Yoriyoi-drop/vtuber-tracker.git
+cd vtuber-tracker
+
+# Jalankan script instalasi cepat
+chmod +x startup.sh
+./startup.sh
+```
+
+### 2. Instalasi Manual
+```bash
+# Clone repository
+git clone https://github.com/Yoriyoi-drop/vtuber-tracker.git
+cd vtuber-tracker
+
+# Install dependencies
+pip install opencv-python mediapipe pyqt5 python-osc websocket-client requests numpy pyfakewebcam
+
+# Install dalam mode development
+pip install -e .
+```
+
+### 3. Menjalankan Aplikasi
+```bash
+# Mode GUI (default)
+python run_app.py
+
+# Mode CLI
+python run_app.py --mode cli
+
+# Dengan kamera Android
+python run_app.py --stream-url http://[ANDROID_IP]:8080/video
+
+# Bantuan
+python run_app.py --help
+```
+
+### 4. Kompatibilitas Platform
+- **Windows 10/11**: Dukungan penuh
+- **macOS**: Dukungan penuh (Intel & Apple Silicon)
+- **Linux**: Dukungan penuh (Ubuntu, Debian, Fedora, Arch, dll.)
+
 ## Kontribusi
 Proyek ini terbuka untuk kontribusi. Silakan lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan berkontribusi.
 
