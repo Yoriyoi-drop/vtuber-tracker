@@ -165,33 +165,54 @@ Semua pengaturan dapat dikonfigurasi melalui objek `VTuberConfig`:
 - `vmc_host`, `vmc_port` - Alamat dan port untuk output VMC
 - `enable_vmc_output` - Aktifkan output ke perangkat lunak VMC
 
-## Integrasi dengan Software VTuber
+## Integrasi dengan Platform Streaming
 
-VTuber Tracker dapat digunakan dengan berbagai software VTuber termasuk:
+VTuber Tracker kompatibel dengan semua platform streaming utama:
 
-### 1. VSeeFace
+### 1. VSeeFace (Core Engine)
 - Kirim parameter pelacakan wajah melalui protokol OSC
 - Port default: 39539 (VMC protocol)
 - Support untuk Live2D dan VRM model
-- Bisa digunakan dalam game Steam dan aplikasi lainnya
-- Lihat [examples/vseeface_integration.py](examples/vseeface_integration.py) dan [examples/steam_game_integration.py](examples/steam_game_integration.py)
+- Output sebagai kamera virtual untuk platform lain
+- Lihat [examples/vseeface_integration.py](examples/vseeface_integration.py)
 
-### 2. Live2D Cubism
+### 2. Game Streaming
+- **VRChat**: Menggunakan kamera virtual VSeeFace
+- **Steam Games**: Dengan VSeeFace sebagai input kamera
+- Lihat [examples/steam_game_integration.py](examples/steam_game_integration.py)
+
+### 3. Live Streaming
+- **Twitch**: Melalui OBS Studio dengan VSeeFace sebagai sumber
+- **YouTube Live**: Melalui OBS Studio atau langsung
+- **Facebook Live**: Melalui OBS Studio
+- Menggunakan VSeeFace sebagai sumber kamera virtual
+
+### 4. Video Conference
+- **Zoom**: Pilih VSeeFace sebagai kamera video
+- **Discord**: Pilih VSeeFace sebagai input video
+- **Microsoft Teams, Google Meet**: Kompatibel melalui kamera virtual
+
+### 6. Lainnya
+- **Recording**: Dapat digunakan untuk merekam VTuber
+- **Broadcasting**: Mendukung berbagai protokol streaming
+- Lihat [examples/all_platforms_support.py](examples/all_platforms_support.py) untuk panduan lengkap
+
+### 7. Live2D Cubism
 - Kirim parameter pelacakan wajah melalui OSC ke Live2D Cubism
 - Format parameter: `angle_x`, `angle_y`, `angle_z`, `eye_l_open`, `mouth_open`, dll
 - Cocok untuk model yang dioptimalkan untuk animasi real-time
 
-### 3. VRM (3D Model)
+### 8. VRM (3D Model)
 - Gunakan model VRM dalam aplikasi seperti VRoid Studio
 - Parameter pelacakan dikirim ke aplikasi 3D (seperti VTube Studio)
 - Mendukung blendshape untuk ekspresi wajah
 
-### 4. Spine 2D Skeletal Animation
+### 9. Spine 2D Skeletal Animation
 - Gunakan skeleton 2D dengan Spine
 - Parameter mengontrol bone dalam struktur 2D
 - Efisien untuk animasi 2D berkualitas tinggi
 
-### 5. Format OSC untuk Software VTuber
+### 10. Format OSC untuk Software VTuber
 VTuber Tracker menghasilkan parameter pelacakan wajah yang dapat dikirim melalui protokol OSC ke berbagai software:
 
 Untuk VMC Protocol (VSeeFace, VTube Studio, etc):
@@ -264,6 +285,7 @@ Lihat folder [examples/](examples/) untuk contoh-contoh penggunaan yang dapat me
 - [3d_model_integration.py](examples/3d_model_integration.py) - Contoh integrasi dengan model 3/2D
 - [vseeface_integration.py](examples/vseeface_integration.py) - Contoh integrasi dengan VSeeFace
 - [steam_game_integration.py](examples/steam_game_integration.py) - Contoh penggunaan dalam game Steam
+- [all_platforms_support.py](examples/all_platforms_support.py) - Panduan dukungan semua platform streaming
 
 ## Arsitektur
 Untuk dokumentasi arsitektur dan bagaimana sistem bekerja secara internal, lihat [ARCHITECTURE.md](ARCHITECTURE.md).
