@@ -216,38 +216,38 @@ Contoh:
     
     # Cek dependencies
     if not check_dependencies():
-        print("\n⚠️  Peringatan: Beberapa module hilang. Instal dependencies terlebih dahulu.")
+        print("\n[PERINGATAN] Beberapa module hilang. Instal dependencies terlebih dahulu.")
         print("   Perintah instalasi: pip install opencv-python mediapipe numpy PyQt5 python-osc websocket-client requests pyfakewebcam")
         response = input("Lanjutkan tanpa pengecekan dependencies? (y/n): ")
         if response.lower() not in ['y', 'yes', 'ya']:
             return
-    
+
     # Tentukan mode
     if args.cli:
         mode = 'cli'
     else:
         mode = args.mode
-    
+
     # Jalankan aplikasi berdasarkan konfigurasi
     try:
         if args.stream_url:
-            print(f"🔄 Menggunakan kamera IP/Android: {args.stream_url}")
+            print(f"[CAM] Menggunakan kamera IP/Android: {args.stream_url}")
             run_with_android_camera(args.stream_url)
         elif args.camera is not None:
-            print(f"🔄 Menggunakan kamera dengan indeks: {args.camera}")
+            print(f"[CAM] Menggunakan kamera dengan indeks: {args.camera}")
             run_with_camera_index(args.camera)
         elif mode == 'cli':
-            print("🔄 Menjalankan dalam mode CLI...")
+            print("[CLI] Menjalankan dalam mode CLI...")
             run_cli_mode(verbose=args.verbose)
         else:
-            print("🔄 Menjalankan dalam mode GUI...")
+            print("[GUI] Menjalankan dalam mode GUI...")
             run_gui_mode()
-    
+
     except KeyboardInterrupt:
-        print("\n\n🔴 Aplikasi dihentikan oleh pengguna (Ctrl+C)")
+        print("\n\n[STOP] Aplikasi dihentikan oleh pengguna (Ctrl+C)")
         logger.info("Aplikasi dihentikan oleh pengguna")
     except Exception as e:
-        print(f"\n❌ Terjadi kesalahan: {e}")
+        print(f"\n[ERROR] Terjadi kesalahan: {e}")
         logger.error(f"Error saat menjalankan aplikasi: {e}")
         import traceback
         traceback.print_exc()
