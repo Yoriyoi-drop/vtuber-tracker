@@ -1,6 +1,9 @@
 # VTuber Tracker - Library Python untuk Pelacakan Wajah
 
-## Deskripsi
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Library Python yang menyediakan fungsi pelacakan wajah untuk aplikasi VTuber. Dapat digunakan untuk streaming jangka panjang dengan output ke perangkat lunak seperti VSeeFace, OBS, Zoom, dll.
 
 ## Instalasi
@@ -29,9 +32,9 @@ pip install opencv-python mediapipe pyqt5 python-osc websocket-client requests n
 
 ### Instalasi Library
 ```bash
-# Clone atau download repository
-git clone https://github.com/yourusername/vtuber-tracker-lib.git
-cd vtuber-tracker-lib
+# Clone repository
+git clone https://github.com/Yoriyoi-drop/vtuber-tracker.git
+cd vtuber-tracker
 
 # Install dalam mode pengembangan
 pip install -e .
@@ -176,4 +179,10 @@ Library juga mendukung penggunaan OBS Virtual Camera sebagai sumber input. Ini m
 - ✅ Mode presisi tinggi
 - ✅ Pengaturan deadzone
 - ✅ Output VMC
-- ✅ Streaming jangka panjang# vtuber-tracker
+- ✅ Streaming jangka panjang
+
+## Kontribusi
+Proyek ini terbuka untuk kontribusi. Silakan lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan berkontribusi.
+
+## Lisensi
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
