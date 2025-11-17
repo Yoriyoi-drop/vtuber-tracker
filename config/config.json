@@ -49,6 +49,12 @@
     "port": 8001,
     "enabled": false
   },
+  "virtual_camera": {
+    "enabled": false,
+    "width": 640,
+    "height": 480,
+    "fps": 30
+  },
   "gui": {
     "window_width": 800,
     "window_height": 600

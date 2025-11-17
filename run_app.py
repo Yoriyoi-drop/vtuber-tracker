@@ -102,6 +102,12 @@ class VTuberTrackerApp:
                     "port": 8001,
                     "enabled": False
                 },
+                "virtual_camera": {
+                    "enabled": False,
+                    "width": 640,
+                    "height": 480,
+                    "fps": 30
+                },
                 "gui": {
                     "window_width": 800,
                     "window_height": 600
