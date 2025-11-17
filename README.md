@@ -223,6 +223,63 @@ Untuk VMC Protocol (VSeeFace, VTube Studio, etc):
 
 Lihat [examples/3d_model_integration.py](examples/3d_model_integration.py) untuk contoh konversi parameter.
 
+## Mendukung Hybrid Python-C++
+
+Proyek ini sekarang mendukung integrasi antara Python dan C++ untuk performa maksimum:
+
+### 1. Struktur Hybrid
+- **Python Layer**: Antarmuka tingkat tinggi dan mudah digunakan
+- **C++ Core**: Performa tinggi untuk pelacakan wajah dan pemrosesan real-time
+- **Bridge**: Komunikasi antara Python dan C++ menggunakan pybind11
+
+### 2. Manfaat Pendekatan Hybrid
+- **Kecepatan**: Pemrosesan intensif di C++ untuk latensi rendah
+- **Fleksibilitas**: Kemudahan pengembangan di Python
+- **Efisiensi**: Penggunaan resource yang optimal
+- **Portabilitas**: Dapat dijalankan di semua platform
+
+### 3. Library yang Digunakan
+
+#### Python Libraries (10):
+1. OpenCV-Python - Computer vision dan image processing
+2. MediaPipe - Framework pelacakan landmark wajah dan pose tubuh
+3. NumPy - Operasi matematika dan array multidimensional
+4. SciPy - Scientific computation dan algoritma numerik
+5. PyQt5/6 - GUI framework untuk aplikasi desktop
+6. python-osc - Komunikasi OSC untuk VMC (Virtual Motion Capture)
+7. PyFakeWebcam - Virtual camera output untuk sistem
+8. SoundDevice - Manipulasi audio (jika diperlukan untuk audio sync)
+9. Requests - HTTP library untuk REST API integrasi
+10. Numba - Acceleration untuk komputasi numerik
+
+#### C++ Libraries (10):
+1. OpenCV C++ - Computer vision library dengan performa tinggi
+2. MediaPipe C++ - Native MediaPipe untuk performa maksimum
+3. Eigen3 - Linear algebra library untuk transformasi 3D
+4. Boost - Koleksi library C++ standar tambahan
+5. OpenSceneGraph - Rendering 3D untuk model VTuber
+6. PCL (Point Cloud Library) - 3D point cloud processing
+7. FFmpeg - Video/audio encoding/decoding dan streaming
+8. WebSocket++ - Komunikasi real-time untuk networking
+9. GLM - OpenGL Mathematics untuk grafik 3D
+10. TinyXML2 - Parsing XML untuk konfigurasi dan metadata
+
+### 4. Penggunaan Hybrid
+```python
+from python_cpp_bridge import CppFaceTrackerBridge
+
+# Create hybrid tracker
+bridge = CppFaceTrackerBridge()
+
+# Process with C++ acceleration
+tracking_data = bridge.process_frame(landmarks)
+
+# Use Python for high-level orchestration
+# while C++ handles intensive computations
+```
+
+Lihat [cpp/](cpp/) untuk implementasi C++ dan [python_cpp_bridge.py](python_cpp_bridge.py) untuk contoh bridge.
+
 ## Troubleshooting
 - Jika kamera tidak ditemukan, pastikan tidak digunakan aplikasi lain
 - Tambahkan user ke grup video di Linux: `sudo usermod -a -G video $USER`
@@ -286,6 +343,7 @@ Lihat folder [examples/](examples/) untuk contoh-contoh penggunaan yang dapat me
 - [vseeface_integration.py](examples/vseeface_integration.py) - Contoh integrasi dengan VSeeFace
 - [steam_game_integration.py](examples/steam_game_integration.py) - Contoh penggunaan dalam game Steam
 - [all_platforms_support.py](examples/all_platforms_support.py) - Panduan dukungan semua platform streaming
+- [python_cpp_bridge.py](python_cpp_bridge.py) - Contoh integrasi hybrid Python-C++
 
 ## Arsitektur
 Untuk dokumentasi arsitektur dan bagaimana sistem bekerja secara internal, lihat [ARCHITECTURE.md](ARCHITECTURE.md).
