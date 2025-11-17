@@ -165,35 +165,39 @@ Semua pengaturan dapat dikonfigurasi melalui objek `VTuberConfig`:
 - `vmc_host`, `vmc_port` - Alamat dan port untuk output VMC
 - `enable_vmc_output` - Aktifkan output ke perangkat lunak VMC
 
-## Integrasi Model 3/2D
+## Integrasi dengan Software VTuber
 
-VTuber Tracker dapat digunakan dengan berbagai jenis model 3/2D:
+VTuber Tracker dapat digunakan dengan berbagai software VTuber termasuk:
 
-### 1. Live2D Cubism
+### 1. VSeeFace
+- Kirim parameter pelacakan wajah melalui protokol OSC
+- Port default: 39539 (VMC protocol)
+- Support untuk Live2D dan VRM model
+- Bisa digunakan dalam game Steam dan aplikasi lainnya
+- Lihat [examples/vseeface_integration.py](examples/vseeface_integration.py) dan [examples/steam_game_integration.py](examples/steam_game_integration.py)
+
+### 2. Live2D Cubism
 - Kirim parameter pelacakan wajah melalui OSC ke Live2D Cubism
 - Format parameter: `angle_x`, `angle_y`, `angle_z`, `eye_l_open`, `mouth_open`, dll
 - Cocok untuk model yang dioptimalkan untuk animasi real-time
 
-### 2. VRM (3D Model)
+### 3. VRM (3D Model)
 - Gunakan model VRM dalam aplikasi seperti VRoid Studio
-- Parameter pelacakan dikirim ke aplikasi 3D (seperti VSeeFace, VTube Studio)
+- Parameter pelacakan dikirim ke aplikasi 3D (seperti VTube Studio)
 - Mendukung blendshape untuk ekspresi wajah
 
-### 3. Spine 2D Skeletal Animation
+### 4. Spine 2D Skeletal Animation
 - Gunakan skeleton 2D dengan Spine
 - Parameter mengontrol bone dalam struktur 2D
 - Efisien untuk animasi 2D berkualitas tinggi
 
-### 4. Format OSC untuk Model 3/2D
-VTuber Tracker menghasilkan parameter pelacakan wajah yang dapat dikonversi ke format berikut:
+### 5. Format OSC untuk Software VTuber
+VTuber Tracker menghasilkan parameter pelacakan wajah yang dapat dikirim melalui protokol OSC ke berbagai software:
 
+Untuk VMC Protocol (VSeeFace, VTube Studio, etc):
 ```
-/Live2D/angle/x     -> Rotasi horizontal kepala
-/Live2D/angle/y     -> Rotasi vertikal kepala
-/Live2D/angle/z     -> Rotasi miring kepala
-/Live2D/eye/l/open  -> Pembukaan mata kiri
-/Live2D/eye/r/open  -> Pembukaan mata kanan
-/Live2D/mouth/open  -> Pembukaan mulut
+/VMC/Ext/Root/Rot   -> Rotasi kepala (quaternion)
+/VMC/Ext/Blend/Val  -> Ekspresi wajah (blink, mouth, dll)
 ```
 
 Lihat [examples/3d_model_integration.py](examples/3d_model_integration.py) untuk contoh konversi parameter.
@@ -258,6 +262,8 @@ Lihat folder [examples/](examples/) untuk contoh-contoh penggunaan yang dapat me
 - [android_camera_example.py](examples/android_camera_example.py) - Panduan penggunaan kamera Android
 - [android_camera_integration.py](examples/android_camera_integration.py) - Contoh integrasi kamera Android
 - [3d_model_integration.py](examples/3d_model_integration.py) - Contoh integrasi dengan model 3/2D
+- [vseeface_integration.py](examples/vseeface_integration.py) - Contoh integrasi dengan VSeeFace
+- [steam_game_integration.py](examples/steam_game_integration.py) - Contoh penggunaan dalam game Steam
 
 ## Arsitektur
 Untuk dokumentasi arsitektur dan bagaimana sistem bekerja secara internal, lihat [ARCHITECTURE.md](ARCHITECTURE.md).
