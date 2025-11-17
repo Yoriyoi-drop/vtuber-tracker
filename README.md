@@ -369,18 +369,25 @@ pip install -e .
 
 ### 3. Menjalankan Aplikasi
 ```bash
-# Mode GUI (default)
-python run_app.py
+# Method 1: Menggunakan main.py (direkomendasikan)
+python main.py                    # GUI mode dengan kamera default
+python main.py --mode cli         # CLI mode
+python main.py --mode gui         # GUI mode
+python main.py --camera 1         # Gunakan kamera dengan indeks 1
+python main.py --stream-url http://[ANDROID_IP]:8080/video  # Gunakan kamera Android
+python main.py --help             # Tampilkan bantuan
 
-# Mode CLI
-python run_app.py --mode cli
-
-# Dengan kamera Android
+# Method 2: Menggunakan run_app.py (lama)
+python run_app.py                 # GUI mode dengan kamera default
+python run_app.py --mode cli      # CLI mode
 python run_app.py --stream-url http://[ANDROID_IP]:8080/video
-
-# Bantuan
-python run_app.py --help
 ```
+
+`main.py` adalah file utama yang direkomendasikan untuk menjalankan aplikasi, karena:
+- Menyediakan interface yang lebih user-friendly
+- Melakukan pengecekan dependencies otomatis
+- Memberikan informasi sistem dan instruksi yang jelas
+- Menggabungkan semua fungsi dalam satu file mudah akses
 
 ### 4. Kompatibilitas Platform
 - **Windows 10/11**: Dukungan penuh
