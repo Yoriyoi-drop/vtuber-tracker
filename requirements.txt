@@ -1,0 +1,18 @@
+# Face tracking and computer vision
+opencv-python>=4.5.0
+mediapipe>=0.8.0
+numpy>=1.21.0
+
+# GUI
+PyQt5>=5.15.0
+
+# Network communication
+python-osc>=1.7.0
+websocket-client>=1.2.0
+requests>=2.25.0
+
+# Virtual camera support
+pyfakewebcam>=0.1.0
+
+# Configuration and utilities
+dataclasses; python_version < '3.7'

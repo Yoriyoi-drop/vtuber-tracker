@@ -1,0 +1,85 @@
+# Virtual environments
+vtuber_env/
+env/
+venv/
+env*/
+venv*/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Remove all __pycache__ files that may be in the index
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+vtuber_tracker.log
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Distribution / packaging
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+htmlcov/
+
+# PyCharm
+.idea/
+
+# Project specific
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+*.pyd
+
+# Ignore the virtual environment's site-packages
+vtuber_env/lib/python3.*/site-packages/

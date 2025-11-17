@@ -1,0 +1,62 @@
+{
+  "camera": {
+    "default_camera_index": 0,
+    "frame_width": 640,
+    "frame_height": 480
+  },
+  "tracking": {
+    "max_faces": 1,
+    "min_detection_confidence": 0.5,
+    "min_tracking_confidence": 0.5
+  },
+  "smoothing": {
+    "alpha": 0.2,
+    "enabled": true
+  },
+  "calibration": {
+    "required_samples": 30,
+    "head_yaw_multiplier": 1.0,
+    "head_pitch_multiplier": 1.0,
+    "head_roll_multiplier": 1.0,
+    "eye_left_multiplier": 1.0,
+    "eye_right_multiplier": 1.0,
+    "mouth_open_multiplier": 1.0,
+    "mouth_wide_multiplier": 1.0,
+    "head_yaw_deadzone": 0.05,
+    "head_pitch_deadzone": 0.05,
+    "head_roll_deadzone": 0.05,
+    "eye_left_deadzone": 0.05,
+    "eye_right_deadzone": 0.05,
+    "mouth_open_deadzone": 0.05,
+    "mouth_wide_deadzone": 0.05
+  },
+  "precision": {
+    "enabled": false,
+    "sensitivity_multiplier": 1.5,
+    "noise_reduction_enabled": true,
+    "noise_threshold": 0.01,
+    "eye_blink_precision": true,
+    "mouth_precision": true,
+    "head_rotation_precision": true
+  },
+  "virtual_camera": {
+    "enabled": false,
+    "width": 640,
+    "height": 480,
+    "fps": 30
+  },
+  "vmc": {
+    "host": "127.0.0.1",
+    "port": 39539,
+    "enabled": true
+  },
+  "vts": {
+    "host": "127.0.0.1",
+    "port": 8001,
+    "enabled": false
+  },
+  "gui": {
+    "window_width": 800,
+    "window_height": 600
+  }
+}
